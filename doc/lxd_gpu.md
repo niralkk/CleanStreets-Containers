@@ -1,10 +1,10 @@
 # LXD gpu support
 
-###Install GPU on host
+## Install GPU on host
 
-Ubuntu 14.04 
+Ubuntu 14.04
 
-```
+```bash
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_8.0.61-1_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu1404_8.0.61-1_amd64.deb
 sudo apt-get update
@@ -20,19 +20,18 @@ sudo apt-get update
 sudo apt-get install cuda-8-0
 ```
 
-After install use  ```nvidia-smi``` check driver version 
+After install use  ```nvidia-smi``` check driver version
 
 [host_nvidia_smi]: img/host_nvidia_smi.png
 
 ![host_nvidia_smi]
 
-
-### Install LXD
+## Install LXD
 
 Install LXD
 
 ```bash
-sudo add-apt-repository ppa:ubuntu-lxc/lxc-stable -y
+sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable -y
 sudo apt-get update
 sudo apt-get install lxd
 ```
@@ -40,24 +39,24 @@ sudo apt-get install lxd
 Install LXC
 
 ```bash
-sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable -y
+sudo add-apt-repository ppa:ubuntu-lxc/lxc-stable -y
 sudo apt-get update
 sudo apt-get install lxc
 ```
 
 Add yourself to lxd account to avoid using root privilege
 
-```
+```bash
 sudo usermod -aG lxd $(whoami)
 ```
 
-###Create a GPU support container
+### Create a GPU support container
 
 First time to start lxd container 
 Basically, just type enter and use default setting
 
 ```bash
-lxd init
+sudo lxd init
 ```
 
 Create a GPU support container image
@@ -90,30 +89,31 @@ If to reponse library no match see treouble shooting 1
 lxc exec c1 -- nvidia-smi
 ```
 
-####Publish container image
+#### Publish container image
 
 Stop the running containner
 
-```
+```bash
 lxc stop c1
 ```
 
 Publish GPU support image
 
-```
+```bash
 lxc publish c1 --alias ub1604_cuda8
 ```
 
-# Trouble shooting
+## Trouble shooting
+
 1. ```lxc exec c1 -- nvidia-smi``` said library not match
-This happend if host add 3rd party ppa for gpu driver 
-But in previous setting containter used nvidia cuda repo provide gpu driver.
- 
-2. If reboot is not allowed, tried to unload nvidia driver 
+
+   This happend if host add 3rd party ppa for gpu driver.
+   But in previous setting containter used nvidia cuda repo provide gpu driver.
+
+2. If reboot is not allowed, tried to unload nvidia driver
 
     ```bash
     sudo rmmod nvidia
     ```
-    
-    Check nvidia module depdency ```lsmod | grep nvidia``` , and use ```rmmod``` step by step
 
+    Check nvidia module depdency ```lsmod | grep nvidia``` , and use ```rmmod``` step by step
