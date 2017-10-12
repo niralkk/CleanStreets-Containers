@@ -24,6 +24,7 @@ sudo lxd init --auto \
     --network-port 8443
 
 lxc launch ubuntu:16.04 $CONTAINER
+lxc exec $CONTAINER -- dhclient eth0
 lxc exec $CONTAINER -- wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 lxc exec $CONTAINER -- dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 lxc exec $CONTAINER -- apt-get update
