@@ -20,7 +20,7 @@ EXPORT_NAME=ub1604_cuda8
 echo "Build LXC GPU image"
 sudo lxc init --auto \
     --storage-backend dir \
-    --network-address 0.0.0.0
+    --network-address 0.0.0.0 \
     --network-port 8443
 
 lxc launch ubuntu:16.04 $CONTAINER
@@ -39,4 +39,7 @@ lxc exec $CONTAINER -- nvidia-smi
 echo "Create LXC GPU image template ${EXPORT_NAME}"
 lxc stop $CONTAINER
 lxc publish $CONTAINER --alias $EXPORT_NAME
-echo "CCreate LXC GPU image template: ${EXPORT_NAME} done"
+echo "Create LXC GPU image template: ${EXPORT_NAME} done"
+
+# clean up
+lxc delete $CONTAINER
