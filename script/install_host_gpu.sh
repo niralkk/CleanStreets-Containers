@@ -9,5 +9,5 @@ sudo apt-get install cuda-8-0
 # clean up
 sudo rm cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 
-echo "Install CUDA8.0 done\n"
+echo "Install CUDA8.0 done"
 nvidia-smi
