@@ -31,7 +31,7 @@ lxc exec $CONTAINER -- apt-get install cuda-demo-suite-8-0 --no-install-recommen
 echo 'Build LXC GPU image done'
 
 # add gpu config to image
-lxc config set $CONTAINER gpu gpu
+lxc config device add $CONTAINER gpu gpu
 lxc exec $CONTAINER -- echo "LXC GPU info"
 lxc exec $CONTAINER -- nvidia-smi
 
