@@ -52,7 +52,7 @@ sudo usermod -aG lxd $(whoami)
 
 ### Create a GPU support container
 
-First time to start lxd container 
+First time to start lxd container
 Basically, just type enter and use default setting
 
 ```bash

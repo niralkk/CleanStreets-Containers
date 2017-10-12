@@ -7,4 +7,5 @@ sudo apt-get update
 sudo apt-get install cuda-8-0
 
 echo "Install CUDA8.0 done"
-echo $(nvidia-smi)
+echo "GPU info"
+nvidia-smi
