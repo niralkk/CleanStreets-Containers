@@ -28,7 +28,7 @@ lxc exec $CONTAINER -- dhclient eth0
 lxc exec $CONTAINER -- wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 lxc exec $CONTAINER -- dpkg -i cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 lxc exec $CONTAINER -- apt-get update
-lxc exec $CONTAINER -- apt-get install cuda-demo-suite-8-0 --no-install-recommends
+lxc exec $CONTAINER -- apt-get install cuda-demo-suite-8-0 --no-install-recommends -y
 echo 'Build LXC GPU image done'
 
 # add gpu config to image
