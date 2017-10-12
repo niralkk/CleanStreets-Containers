@@ -18,7 +18,7 @@ CONTAINER=cuda
 EXPORT_NAME=ub1604_cuda8
 
 echo "Build LXC GPU image"
-sudo lxc init --auto \
+sudo lxd init --auto \
     --storage-backend dir \
     --network-address 0.0.0.0 \
     --network-port 8443
