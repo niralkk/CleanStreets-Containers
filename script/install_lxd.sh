@@ -18,10 +18,13 @@ CONTAINER=cuda
 EXPORT_NAME=ub1604_cuda8
 
 echo "Build LXC GPU image"
-sudo lxd init --auto \
+lxd init --auto \
     --storage-backend dir \
     --network-address 0.0.0.0 \
     --network-port 8443
+
+lxc network create lxdbr0
+lxc network attach-profile lxdbr0 default eth0
 
 lxc launch ubuntu:16.04 $CONTAINER
 lxc exec $CONTAINER -- dhclient eth0
