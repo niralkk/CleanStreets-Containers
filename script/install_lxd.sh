@@ -4,7 +4,7 @@ echo "Install LXC and LXD"
 sudo add-apt-repository ppa:ubuntu-lxc/lxd-stable -y
 sudo add-apt-repository ppa:ubuntu-lxc/lxc-stable -y
 sudo apt-get update
-sudo apt-get install lxd lxc
+sudo apt-get install lxd lxc -y
 echo "Install LXC and LXD done"
 
 # add user to lxd group
